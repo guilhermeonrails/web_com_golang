@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/Alura/routes"
@@ -8,5 +10,8 @@ import (
 
 func main() {
 	routes.CarregaRotas()
-	http.ListenAndServe(":8000", nil)
+
+	porta := ":8000"
+	fmt.Println("Aguardando requisições na porta" + porta)
+	log.Fatal(http.ListenAndServe(porta, nil))
 }
