@@ -1,0 +1,17 @@
+version: '3'
+services:
+  database:
+    image: "postgres"
+    volumes:
+      - ./migration.sql:/docker-entrypoint-initdb.d/1-schema.sql    
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=12345678
+      - POSTGRES_DB=alura_loja      
+    #Caso deseje um volume persistente descomentar as linhas comentadas abaixo
+    #volumes:
+    #  - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+    ports:
+        - "5432:5432"
+#volumes:
+#  database-data: # named volumes can be managed easier using docker-compose
